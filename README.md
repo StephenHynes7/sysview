@@ -1,9 +1,10 @@
 # sysview
-Gives a quick overview of installed packages in JSON format on a Debian system
+Generates a HTML page which displays installed packages and their versions of your Debian environment
 
 Installation
 ------------
-Run 
+Run
 ```
-python sysview.py 
+python sysview.py
 ```
+Then open the html page "sysview.html"
