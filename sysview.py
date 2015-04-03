@@ -1,11 +1,12 @@
 import json
-import re
+from json2html import *
 import subprocess
 
 
 def setup():
     data = build_json()
-    print json.dumps(data, sort_keys=True, indent=4, separators=(',', ':'))
+    table = generate_table(data)
+    generate_html_page(table)
 
 
 def build_json():
@@ -17,6 +18,17 @@ def build_json():
         kvp = line.split(" ")
         json[kvp[0]] = kvp[2]
     return json
+
+
+def generate_table(data):
+    table = json2html.convert(json=json.dumps(data, sort_keys=True))
+    return table
+
+
+def generate_html_page(table):
+    html_file = open('sysview.html', 'w+')
+    html_file.write(table)
+    html_file.close()
 
 if __name__ == '__main__':
     setup()
